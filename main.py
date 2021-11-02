@@ -32,8 +32,8 @@ def main():
     dispatcher.add_handler(MessageHandler(Filters.text, handle_message))
     dispatcher.add_error_handler(error)
 
-    updater.start_webhook(listen="0.0.0.0", port=int(PORT), url_path=API_KEY)
-    updater.bot.setWebhook('https://telegram-crypto-bot-kush.herokuapp.com/' + API_KEY)
+    # updater.start_webhook(listen="0.0.0.0", port=int(PORT), url_path=API_KEY, webhook_url='https://telegram-crypto-bot-kush.herokuapp.com/' + API_KEY)
+    updater.start_polling()
     updater.idle()
 
 
