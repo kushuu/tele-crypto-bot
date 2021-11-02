@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 API_KEY = os.getenv("BOT_API")
-PORT = int(os.environ.get('PORT', 5000))
+PORT = int(os.environ.get('PORT', 88))
 
 print("Bot started.")
 
