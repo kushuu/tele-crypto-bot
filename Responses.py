@@ -1,6 +1,8 @@
 from dotenv import load_dotenv
 import os, requests, json
 
+from requests.models import requote_uri
+
 load_dotenv()
 
 API_KEY = os.getenv("API_KEY")
@@ -41,6 +43,17 @@ def message_handler_main_function(input_text):
             final_response += "Coin change in rank:" + "\t" + json_file[coin_idx]['rank_delta'] + "\n"
             final_response += "\n\n"
 
+        return final_response
+    
+    if "fun_fact" in message:
+        if len(message) < 2:
+            return "Enter a number to get a funfact."
+        
+        final_response = ""
+        nums = message.split()[1:]
+        for num in nums:
+            response = requests.get("http://numbersapi.com/" + num + "/math")
+            final_response += response.text + "\n\n"
         return final_response
     
     return "Sorry I do not understand that!"
